@@ -45,5 +45,9 @@ build() {
 
 package() {
     cd "${srcdir}/${_gitname}-build"
-    sudo make INSTALL_ROOT="${pkgdir}" install
+    mkdir -p ${pkgdir}/usr/local/bin/ \
+        ${pkgdir}/etc/X11/ \
+        ${pkgdir}/etc/udev/hwdb.d/ \
+        ${pkgdir}/etc/udev/rules.d/
+    make INSTALL_ROOT="${pkgdir}" install
 }
